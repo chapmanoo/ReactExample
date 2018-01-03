@@ -1,7 +1,8 @@
-import React, { Component } from 'react';
+// import React, { Component } from 'react';
+import React from 'react';
 import '../App.css';
 
-class RowData extends Component {
+/*class RowData extends Component {
     render() {
         return (
             <tbody id="filmDetails">
@@ -19,6 +20,22 @@ class RowData extends Component {
             </tbody>
         );
     }
-}
+}*/
+
+const RowData = (props) => (
+    <tbody id="filmDetails">
+        {
+            props.films.map((film) => (
+                <tr key={film.id.toString()}>
+                    <td> <button class="deleteFilm"> X </button> </td>
+                    <td> {film.title}</td>
+                    <td> {film.runTime}</td>
+                    <td> {film.release}</td>
+                    <td> <button class="editFilm"> Edit </button> </td>
+                </tr>
+            ))
+        }
+    </tbody>
+);
 
 export default RowData;
