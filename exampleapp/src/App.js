@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import logo from './image.png';
 import './App.css';
+import Table from "./components/Table.js";
 
 class App extends Component {
   constructor() {
@@ -27,7 +28,6 @@ class App extends Component {
     }
   }
 
-
   render() {
     return (
       <div className="App">
@@ -38,13 +38,14 @@ class App extends Component {
         <p className="App-intro">
           Hello there my friend!
         </p>
+        <Table films={this.state.films} />
 
         {/* {
           this.state.films.map((film) => (
             <p key={film.id.toString()}> Film title: {film.title}, Film runtime: {film.runTime}, Film release: {film.release} </p>))
         } */}
 
-        <table className="filmTable">
+        {/* <table className="filmTable">
           <h2>Films</h2>
           <br></br>
           <table>
@@ -69,7 +70,7 @@ class App extends Component {
               }
             </tbody>
           </table>
-        </table>
+        </table> */}
       </div>
     );
   }
