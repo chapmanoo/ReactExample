@@ -39,38 +39,6 @@ class App extends Component {
           Hello there my friend!
         </p>
         <Table films={this.state.films} />
-
-        {/* {
-          this.state.films.map((film) => (
-            <p key={film.id.toString()}> Film title: {film.title}, Film runtime: {film.runTime}, Film release: {film.release} </p>))
-        } */}
-
-        {/* <table className="filmTable">
-          <h2>Films</h2>
-          <br></br>
-          <table>
-            <thead>
-              <th>&nbsp;</th>
-              <th>Title</th>
-              <th>Run Time</th>
-              <th>Release Year</th>
-              <th>&nbsp;</th>
-            </thead>
-            <tbody id="filmDetails">
-              {
-                this.state.films.map((film) => (
-                  <tr key={film.id.toString()}>
-                    <td> <button class="deleteFilm"> X </button> </td>
-                    <td> {film.title}</td>
-                    <td> {film.runTime}</td>
-                    <td> {film.release}</td>
-                    <td> <button class="editFilm"> Edit </button> </td>
-                  </tr>
-                ))
-              }
-            </tbody>
-          </table>
-        </table> */}
       </div>
     );
   }
