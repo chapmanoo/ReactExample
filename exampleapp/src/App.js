@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
+import logo from './image.png';
 import './App.css';
 
 class App extends Component {
@@ -33,15 +33,43 @@ class App extends Component {
       <div className="App">
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
+          <h1 className="App-title">Welcome to my React</h1>
         </header>
         <p className="App-intro">
-          Hello there my friend <code>src/App.js</code> and save to reload.
+          Hello there my friend!
         </p>
-        {
+
+        {/* {
           this.state.films.map((film) => (
             <p key={film.id.toString()}> Film title: {film.title}, Film runtime: {film.runTime}, Film release: {film.release} </p>))
-        }
+        } */}
+
+        <table className="filmTable">
+          <h2>Films</h2>
+          <br></br>
+          <table>
+            <thead>
+              <th>&nbsp;</th>
+              <th>Title</th>
+              <th>Run Time</th>
+              <th>Release Year</th>
+              <th>&nbsp;</th>
+            </thead>
+            <tbody id="filmDetails">
+              {
+                this.state.films.map((film) => (
+                  <tr key={film.id.toString()}>
+                    <td> <button class="deleteFilm"> X </button> </td>
+                    <td> {film.title}</td>
+                    <td> {film.runTime}</td>
+                    <td> {film.release}</td>
+                    <td> <button class="editFilm"> Edit </button> </td>
+                  </tr>
+                ))
+              }
+            </tbody>
+          </table>
+        </table>
       </div>
     );
   }
