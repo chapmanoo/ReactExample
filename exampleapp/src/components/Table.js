@@ -35,6 +35,7 @@ const Table = (props) => (
                 deleteMethod={props.deleteMethod}
                 editMethod={props.editMethod}
                 id={"filmDetails"}
+                changed={props.changed}
                 toEdit={props.toEdit}
             />
         </table>
