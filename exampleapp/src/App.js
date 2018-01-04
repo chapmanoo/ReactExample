@@ -1,36 +1,37 @@
-import React, { Component } from 'react';
-import logo from './image.png';
-import './App.css';
+import React, { Component } from "react";
+import logo from "./image.png";
+import "./App.css";
 import Table from "./components/Table.js";
 
 class App extends Component {
   state = {
     films: [
       {
-        id: '1',
-        title: 'Toy Story',
+        id: 1,
+        title: "Toy Story",
         runTime: 81,
         release: 1995
       }, {
-        id: '2',
-        title: 'test',
+        id: 2,
+        title: "test",
         runTime: 121,
         release: 1994
       }, {
-        id: '3',
-        title: 'hope',
+        id: 3,
+        title: "hope",
         runTime: 96,
         release: 2003
       }
     ],
-    showFilms: false
+    showFilms: false,
+    toEdit: false
   }
 
   titleChangedHandler = (event, id) => {
     //find the film object index via ID
-    const filmIndex = this.state.films.findIndex(f => {
+    const filmIndex = this.state.films.findIndex((f) => {
       return f.id === id;
-    })
+    });
     //use spread operator to copy the object, not by reference
     const film = {
       ...this.state.films[filmIndex]
@@ -48,15 +49,15 @@ class App extends Component {
   deleteFilmHandler = (id) => {
     const filmIndex = this.state.films.findIndex(f => {
       return f.id === id;
-    })
+    });
     const films = [...this.state.films];
 
     films.splice(filmIndex, 1);
     this.setState({ films: films });
   }
 
-  editFilmHandler = (id) => {
-    this.toEdit= !this.toEdit;
+  editFilmHandler = () => {
+    this.setState({ toEdit: !this.state.toEdit })
   }
 
   render() {
@@ -72,7 +73,8 @@ class App extends Component {
         <Table
           films={this.state.films}
           deleteMethod={this.deleteFilmHandler}
-          editMethod={this.editFilmHandler} />
+          editMethod={this.editFilmHandler}
+          toEdit={this.state.toEdit} />
       </div>
     );
   }
