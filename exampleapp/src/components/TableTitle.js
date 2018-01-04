@@ -10,8 +10,8 @@ import '../App.css';
     }
 }*/
 
-const TableTitle = () => (
-    <h2>Films</h2>
+const TableTitle = (props) => (
+    <h2>{props.text}</h2>
 );
 
 export default TableTitle;

@@ -22,11 +22,19 @@ import TableTitle from "../components/TableTitle.js";
 
 const Table = (props) => (
     <table className="filmTable">
-        <TableTitle />
+        <TableTitle text={'Films'} />
         <br></br>
         <table>
-            <ColumnHeader />
-            <RowData films={props.films} />
+            <ColumnHeader 
+                header1={'Title'}
+                header2={'Runtime'}
+                header3={'Release'}
+            />
+            <RowData
+                films={props.films}
+                deleteMethod={props.deleteMethod}
+                editMethod={props.editMethod}
+                id={'filmDetails'} />
         </table>
     </table>
 );

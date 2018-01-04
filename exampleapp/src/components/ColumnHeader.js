@@ -16,12 +16,12 @@ import '../App.css';
     }
 }*/
 
-const ColumnHeader = () => (
+const ColumnHeader = (props) => (
     <thead>
         <th>&nbsp;</th>
-        <th>Title</th>
-        <th>Run Time</th>
-        <th>Release Year</th>
+        <th>{props.header1}</th>
+        <th>{props.header2}</th>
+        <th>{props.header3}</th>
         <th>&nbsp;</th>
     </thead>
 );
