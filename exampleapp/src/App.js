@@ -62,8 +62,16 @@ class App extends Component {
 
     films.splice(filmIndex, 1);
     this.setState({ films: films });
-  
+
   }
+
+  handleSubmitInParent = (dataFromChild) => { //receive param from child
+    const films = [...this.state.films];  //copy films not by reference
+    films.push(dataFromChild); //push received data to copied films
+    this.setState({films : films}); //set state films as new films
+
+  }
+
 
   editFilmHandler = (idToEdit, newContents) => {
     //Edit a film
@@ -104,7 +112,8 @@ class App extends Component {
           films={this.state.films}
           deleteMethod={this.deleteFilmHandler}
           editMethod={this.editFilmHandler}
-          toEdit={this.state.toEdit} />
+          toEdit={this.state.toEdit} 
+          onSubmit = {this.handleSubmitInParent}/>
       </div>
     );
   }

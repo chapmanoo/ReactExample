@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-//import React from "react";
 import "../App.css";
 import ColumnHeader from "../components/ColumnHeader.js";
 import RowData from "../components/RowData.js";
@@ -25,32 +24,39 @@ class Table extends Component {
                 id: newFilm.id
             }); //states have been set to that of new object
 
-            const request = new Request(this.url + `/${this.id}`, { //create post request
+            const request = new Request(this.url, { //create post request
                 method: "POST",
                 headers: {
                     'Content-Type': 'application/json'
                 },
-                body: JSON.stringify(this.filmToAdd)    //object to be added
+                body: JSON.stringify(this.state)    //object to be added
             });
-            return fetch(request)
+            fetch(request).then((response) => {
+                //add response to state
+                //const films = [...this.props.films];
+                response.json().then(actualResponse=>{
+                    this.props.onSubmit(actualResponse);
+                });
+                // this.props.onSubmit(this.state);
+            })
         }
 
         this.state = {
-          filmToAdd: [
-              this.id = 0,
-              this.title = "",
-              this.release = 0,
-              this.runTime = 0
-          ]
+
+            title: "",
+            runTime: 0,
+            release: 0,
+            id: -1
+
         }
     }
 
     makeFilmFromInputs = () => {
         return {
-            id : 10, //id from field
-            title : "b", //id from field
-            runTime : 10, //id from field
-            release : 10 //id from field
+            id: this.state.id, //id from field
+            title: this.state.title, //id from field
+            runTime: this.state.runTime, //id from field
+            release: this.state.release//id from field
         }
     }
 
@@ -65,11 +71,11 @@ class Table extends Component {
                         header2={"Runtime"}
                         header3={"Release"}
                     />
-                     <tr id="createRow">
-                        <td> <input type="number" placeholder="Enter ID" onChange={this.handleChange("id")}/>  </td>
-                        <td> <input type="text" placeholder="Enter title" onChange={this.handleChange("title")}/> </td>
-                        <td> <input type="number" placeholder="Enter Run Time" onChange={this.handleChange("runTime")}/></td>
-                        <td> <input type="number" placeholder="Enter Release" onChange={this.handleChange("release")}/></td>
+                    <tr id="createRow">
+                        <td> <input type="number" placeholder="Enter ID" onChange={this.handleChange("id")} />  </td>
+                        <td> <input type="text" placeholder="Enter title" onChange={this.handleChange("title")} /> </td>
+                        <td> <input type="number" placeholder="Enter Run Time" onChange={this.handleChange("runTime")} /></td>
+                        <td> <input type="number" placeholder="Enter Release" onChange={this.handleChange("release")} /></td>
                         <td> <button onClick={this.handleSubmit}> Create  </button> </td>
                     </tr>
                     {
