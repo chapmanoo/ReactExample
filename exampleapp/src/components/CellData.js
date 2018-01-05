@@ -10,7 +10,7 @@ class CellData extends Component {
             );
         } else {
             return (
-                <td> <input type="text" name="title" value={this.props.data} /> </td>
+                <td> <input type="text" name="title" value={this.props.data} onChange={this.props.handleChange} /> </td>
             );
         }
     }
